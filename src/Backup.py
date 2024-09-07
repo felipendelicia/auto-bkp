@@ -7,19 +7,8 @@ import sys
 
 from src.File import File
 from src.Directory import Directory
+from src.utils.decorators import new_backup_decorator
 from src.utils.json import import_json
-
-def print_messages(func):
-    def envelope(self):
-        print("[auto-bkp]: Process started")
-        print()
-        backup_directory = Directory(func())
-        print("[auto-bkp]: Finished process")
-        print()
-        print("Process resume:")
-        print("Backup folder path:", backup_directory.src)
-        print("Total backup size:", str(backup_directory.size()) + "MB")
-    return envelope
 
 class Backup:
     def __init__(self) -> None:
@@ -28,7 +17,7 @@ class Backup:
         self.directories = self.CONFIG["dir"]
         self.files = self.CONFIG["file"]
 
-    def new_backup_directory(self)->str:
+    def _new_backup_directory(self)->str:
         creation_destination_ls = os.listdir(self.CONFIG["creation_destination"])
         created = False
         backup_number = 0
@@ -43,8 +32,9 @@ class Backup:
 
         return os.path.join(self.CONFIG["creation_destination"], "backup" + str(backup_number))
 
+    @new_backup_decorator
     def new_backup(self):
-        backup_directory = self.new_backup_directory()
+        backup_directory = self._new_backup_directory()
 
         for file in self.files:
             _file = File(file)
@@ -57,6 +47,8 @@ class Backup:
             display_size = str(_directory.size()) + "MB"
             print("Compressing and making a copy of", _directory.name, display_size)
             _directory.compress(backup_directory)
+
+        return backup_directory
 
     def delete_backups(self):
         creation_destination_ls = os.listdir(self.CONFIG["creation_destination"])

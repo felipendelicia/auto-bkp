@@ -1,4 +1,4 @@
-from src.Backup import Backup
+from src.CLI import CLI
 
-backup = Backup()
-backup.new_backup()
+cli = CLI()
+cli.run()
