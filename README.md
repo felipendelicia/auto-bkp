@@ -4,11 +4,7 @@ Aplicacion para realizar backup de carpetas y archivos seleccionados.
 
 ## Instalacion
 
-Instalar requerimientos:
-
-`pip install -r requeriments.txt`
-
-Tras la instalacion se debe modificar la configuracion de los backups.
+No se instala porque utiliza dependencia nativas de python sin librerias externas.
 
 ## Uso
 
@@ -18,4 +14,4 @@ Generar backup:
 
 Modificar configuracion:
 
-`sh run.sh config`
+`sh config.sh`
