@@ -1,4 +1,4 @@
-# auto-bkp
+# easy-backup
 
 Aplicacion para realizar backup de carpetas y archivos seleccionados.
 
