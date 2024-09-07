@@ -5,8 +5,9 @@ import time
 import zipfile
 import sys
 
-from File import File
-from Directory import Directory
+from src.File import File
+from src.Directory import Directory
+from src.utils.json import import_json
 
 def print_messages(func):
     def envelope(self):
@@ -23,8 +24,7 @@ def print_messages(func):
 class Backup:
     def __init__(self) -> None:
         self.ROOT = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(self.ROOT, "config.json")) as config_file:
-            self.CONFIG = json.load(config_file)
+        self.CONFIG = import_json(os.path.join(self.ROOT, "config.json"))
         self.directories = self.CONFIG["dir"]
         self.files = self.CONFIG["file"]
 
@@ -57,3 +57,15 @@ class Backup:
             display_size = str(_directory.size()) + "MB"
             print("Compressing and making a copy of", _directory.name, display_size)
             _directory.compress(backup_directory)
+
+    def delete_backups(self):
+        creation_destination_ls = os.listdir(self.CONFIG["creation_destination"])
+
+        for i in range(50):
+            current_backup_name = "backup" + str(i)
+            if  current_backup_name in creation_destination_ls:
+                dir = Directory(os.path.join(self.CONFIG["creation_destination"], current_backup_name))
+                print("Erasing", dir.name, str(dir.size()) + "MB")
+                dir.delete()
+
+        print("All backups were deleted.")

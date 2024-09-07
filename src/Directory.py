@@ -1,7 +1,8 @@
 import os
 import zipfile
+import shutil
 
-from File import File
+from src.File import File
 
 class Directory:
     def __init__(self, src:str) -> None:
@@ -37,3 +38,6 @@ class Directory:
 
             print(f"Compression completed successfully. Total compressed files: {compressed_files}")
         print()
+
+    def delete(self):
+        shutil.rmtree(self.src)
