@@ -1,4 +1,4 @@
-# easy-backup
+# Easy backup
 
 Aplicacion para realizar backup de carpetas y archivos seleccionados. El programa fue desarrollado orientado a linux y no fue probado en un sistema operativo diferente.
 
