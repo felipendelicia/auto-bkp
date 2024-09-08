@@ -9,7 +9,7 @@ class CLI:
             os.system("clear")
             print("easy-backup 0.1.0\n\n1 - New backup\n2 - Delete backups\n3 - Edit config\n\nSource code: github.com/felipendelicia/easy-backup ♡") #CLI OPTIONS
             print()
-            option = input("Enter one option [1, 2, 3]: ")
+            option = input("Enter one option [1, 2, 3] (Default 1): ")
             print()
             exec = self.exect(option)
 
