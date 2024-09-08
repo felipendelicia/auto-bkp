@@ -10,7 +10,7 @@ En cuanto es instalado, lo recomendable es modificar la configuracion para poder
 
 Ejecutar la aplicacion:
 
-`python3 run.py`
+`sh run.sh`
 
 ## Configuracion
 
