@@ -9,3 +9,14 @@ En cuanto es instalado, lo recomendable es modificar la configuracion para poder
 ## Uso
 
 `python3 run.py`
+
+## Configuracion
+
+Para configurar la aplicacion es necesario ejecutarla y entrar en el modo configuracion(3). La configuracion consta de un archivo json que se encarga de
+enlistar:
+
+- [dir] Los directorios de interes que se les hara un respaldo.
+- [file] Los archivos de interes que se les hara un respaldo.
+- [creation_destination] La ruta absoluta donde se crearan los respaldos.
+
+Para configurar la aplicacion basta con modificar estos valores.

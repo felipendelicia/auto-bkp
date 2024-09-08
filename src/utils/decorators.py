@@ -1,4 +1,5 @@
 from src.Directory import Directory
+from src.utils.format import display_size
 
 def new_backup_decorator(func):
     def envelope(self, *args, **kwargs):
@@ -10,7 +11,5 @@ def new_backup_decorator(func):
         print()
         print("Backup resume:")
         print("Backup folder path:", backup_directory.src)
-        print("Total backup size:", str(backup_directory.size()) + "MB")
-        print()
-        print("Source code:", "github.com/felipendelicia/easy-backup", "♡")
+        print("Total backup size:", display_size(backup_directory.size()))
     return envelope

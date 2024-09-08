@@ -11,14 +11,11 @@ class Directory:
 
     def size(self) -> float:
         total_size = 0
-        if os.path.isfile(self.src):
-            total_size = os.path.getsize(self.src)
-        elif os.path.isdir(self.src):
-            for dirpath, _, filenames in os.walk(self.src):
-                for file in filenames:
-                    filepath = os.path.join(dirpath, file)
-                    total_size += os.path.getsize(filepath)
-        return round(total_size / (1024 * 1024), 2)
+        for dirpath, _, filenames in os.walk(self.src):
+            for file in filenames:
+                filepath = os.path.join(dirpath, file)
+                total_size += os.path.getsize(filepath)
+        return total_size
 
     def compress(self, dest:str) -> None:
         archive_name = os.path.join(dest, self.name + ".zip")

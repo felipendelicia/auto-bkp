@@ -7,15 +7,10 @@ class CLI:
     def run(self):
         while True:
             os.system("clear")
-
-            print("easy-backup 0.1.0")
+            print("easy-backup 0.1.0\n\n1 - New backup\n2 - Delete backups\n3 - Edit config\n\nSource code: github.com/felipendelicia/easy-backup ♡") #CLI OPTIONS
             print()
-            print("1 - New backup")
-            print("2 - Delete backups")
-            print("3 - Edit config")
+            option = input("Enter one option [1, 2, 3]: ")
             print()
-
-            option = input("Enter one option (1,2,3): ")
             exec = self.exect(option)
 
             if exec: break
