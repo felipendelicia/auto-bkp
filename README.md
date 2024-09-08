@@ -8,6 +8,8 @@ En cuanto es instalado, lo recomendable es modificar la configuracion para poder
 
 ## Uso
 
+Ejecutar la aplicacion:
+
 `python3 run.py`
 
 ## Configuracion
